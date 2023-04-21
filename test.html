@@ -1,0 +1,28 @@
+<form onsubmit="return processForm()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    
+    <button type="submit">Submit</button>
+  </form>
+  
+  <script>
+  function processForm() {
+    // Get user input
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    
+    // Validate user input
+    if (name === "" || email === "") {
+      alert("Please enter your name and email address.");
+      return false;
+    }
+    
+    // Display message
+    alert("Thanks for submitting the form, " + name + "!");
+    return true;
+  }
+  </script>
+  
