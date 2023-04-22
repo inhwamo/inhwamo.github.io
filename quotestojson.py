@@ -27,7 +27,6 @@ quotes_and_authors = [
     "Computer languages of the future will be more concerned with goals and less with procedures specified by the programmer. – Marvin Minsky",
     "We can only see a short distance ahead, but we can see plenty there that needs to be done. – Alan Turing",
     "Those who can imagine anything, can create the impossible. – Alan Turing",
-    "I've always been more interested in the future than in the past. – Grace Hopper",
     "A good scientist is a person with original ideas. A good engineer is a person who makes a design that works with as few original ideas as possible. There are no prima donnas in engineering. – Freeman Dyson",
     "There is a great satisfaction in building good tools for other people to use. – Freeman Dyson",
     "I never did anything worth doing by accident, nor did any of my inventions come indirectly through accident, except the phonograph. No, when I have, fully decided that a result is worth getting, I go about it, and make trial after trial, until it comes. – Thomas Edison",
@@ -59,4 +58,5 @@ output = [parse_quote_and_author(item) for item in quotes_and_authors]
 with open('quotes.json', 'w') as f:
     json.dump(output, f, indent=2)
 
-print(json.dumps(output, indent=2))
+# Print number of json entries
+print(len(output))
