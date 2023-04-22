@@ -45,14 +45,30 @@
 <body>
     <div class="container">
         <h1>Hello</h1>
-        <blockquote>
-            "Your time is limited, don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking."
+        <blockquote id="quote">
+            "Loading quote..."
         </blockquote>
-        <div class="quote-author">- Steve Jobs</div>
+        <div class="quote-author" id="author">- Loading author...</div>
         <a href="test.html">Test Page</a>
         <br>
         <a href="https://www.inhwamo.com/spotifychoreography/">Spotify Choreography</a>
     
     </div>
+    <script>
+        function getDailyQuote(quotes) {
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+            return quotes[dayOfYear % quotes.length];
+        }
+
+        fetch('quotes.json')
+            .then(response => response.json())
+            .then(quotes => {
+                const dailyQuote = getDailyQuote(quotes);
+                document.getElementById('quote').textContent = '"' + dailyQuote.quote + '"';
+                document.getElementById('author').textContent = '- ' + dailyQuote.author;
+            })
+            .catch(error => console.error('Error loading quotes:', error));
+    </script>
 </body>
 </html>
