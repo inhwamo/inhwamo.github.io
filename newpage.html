@@ -77,10 +77,17 @@ $('body').terminal({
               } else {
                   this.echo('Error: Quotes could not be loaded.');
               }
-          }
+          },
+    how: function(){
+        const link = $('<a>',{
+    text:'jQuery Terminal',
+    href:'https://terminal.jcubic.pl/'
+});
+      this.echo("Made with ", email, "by Jakub T. Jankiewicz");
+    }
 
 }, {
-    greetings: "Welcome to InHwa Mo's interactive website! Type  to get started. \nWith thanks to my someone on Twitter for for inspiring the interactive web terminal :)"
+    greetings: "Welcome to InHwa Mo's interactive website! Type 'explore' to get started."
 });
 </script>
   </body>
