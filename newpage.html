@@ -38,7 +38,7 @@
 });
 $('body').terminal({
     explore: function() {
-        this.echo(' some suggested commands:\n\tabout\n\tcurrent\n\temail\n\tquote\n hint: there are more commands. feel free to try other keywords!');
+        this.echo(' some suggested commands:\n\tabout\n\tcurrent\n\temail\n\tquote\n\thow\n hint: there are more commands. feel free to try other keywords!');
     },
     about: function() {
       this.echo(" I study Computing Science and Statistics at Simon Fraser University. I was born in Korea and grew up in China.");
@@ -80,10 +80,10 @@ $('body').terminal({
           },
     how: function(){
         const link = $('<a>',{
-    text:'jQuery Terminal',
+    text:'Made with jQuery Terminal by Jakub T. Janjiewicz',
     href:'https://terminal.jcubic.pl/'
 });
-      this.echo("Made with ", email, "by Jakub T. Jankiewicz");
+      this.echo(link);
     }
 
 }, {
