@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" href="normalize.css">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css"> -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css"/>
+<style>
+  :root {
+     --size: 1.3;
+     --cursor-line: 0.5;
+    --background: #80ed99;
+    --color: #22577a;
+  }
+  </style>
+    <title>inhwa</title>
+  </head>
+
+  <body>
+    <script>
+
+    let quotes = []; // Initialize quotes as empty
+
+    $.getJSON('quotes.json', function(data) { // Fetch the quotes
+        quotes = data;
+});
+$('body').terminal({
+    explore: function() {
+        this.echo(' some suggested commands:\n\tabout\n\tcurrent\n\temail\n\tquote\n hint: there are more commands. feel free to try other keywords!');
+    },
+    about: function() {
+      this.echo(" I study Computing Science and Statistics at Simon Fraser University. I was born in Korea and grew up in China.");
+    },
+    current: function() {
+      this.echo(" Located in Vancouver, BC. Finishing up my final year.");
+    },
+    twitter: function() {
+      const twitter = $('<a>',{
+    text:'@sorryno',
+    href:'https://twitter.com/nope'
+});
+      this.echo(twitter);
+    },
+    email: function() {
+      const email = $('<a>',{
+    text:'imo@sfu.ca',
+    href:'mailto:imo@sfu.ca'
+});
+      this.echo(email);
+    },
+ 
+
+    ls: function() {
+      this.echo( " magic")
+    },
+    magic: function() {
+      this.echo( " i think people mistake technology for magic. but magic arrives from the inexplicable, and technology should never be inexplicable. if you are a technologist, don't think of yourself as a wizard; think of yourself as an artist tasked with making this beautifully confusing world more legible.")
+    },
+    quote: function() {
+              if (quotes.length > 0) {
+                  const today = new Date();
+                  const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+                  const qotd = quotes[dayOfYear % quotes.length];
+                  this.echo(qotd.quote + " - " + qotd.author);
+              } else {
+                  this.echo('Error: Quotes could not be loaded.');
+              }
+          }
+
+}, {
+    greetings: "Welcome to InHwa Mo's interactive website! Type 'explore' to get started. \nWith thanks to my someone on Twitter for for inspiring the interactive web terminal :)"
+});
+</script>
+  </body>
+</html>
