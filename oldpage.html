@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InHwa Mo</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        blockquote {
+            font-size: 1.25rem;
+            font-style: italic;
+            margin: 2rem 0;
+        }
+
+        .quote-author {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello</h1>
+        <blockquote id="quote">
+            "Loading quote..."
+        </blockquote>
+        <div class="quote-author" id="author">- Loading author...</div>
+        <a href="test.html">Test Page</a>
+        <br>
+        <a href="https://www.inhwamo.com/spotifychoreography/">Spotify Choreography</a>
+        <br>
+        <a href="index.html">New Page</a>
+    
+    </div>
+    <script>
+        function getDailyQuote(quotes) {
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+            return quotes[dayOfYear % quotes.length];
+        }
+
+        fetch('quotes.json')
+            .then(response => response.json())
+            .then(quotes => {
+                const dailyQuote = getDailyQuote(quotes);
+                document.getElementById('quote').textContent = '"' + dailyQuote.quote + '"';
+                document.getElementById('author').textContent = '- ' + dailyQuote.author;
+            })
+            .catch(error => console.error('Error loading quotes:', error));
+    </script>
+</body>
+</html>
