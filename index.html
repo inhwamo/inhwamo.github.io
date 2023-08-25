@@ -51,6 +51,12 @@
 
   <body>
     <script>
+    const setFullHeight = () => {
+        document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
+
+    window.addEventListener('load', setFullHeight);
+    window.addEventListener('resize', setFullHeight);
 
     let quotes = []; // Initialize quotes as empty
 
@@ -110,17 +116,17 @@ $('body').terminal({
     prompt: 'guest@inhwa:~$ ',
     name: 'inhwa',});
 
-
-$(document).ready(function() {
-    document.ontouchmove = function(e) {
-        e.preventDefault();
-    }
-});
-$(document).ready(function() {
-    $('.cmd').focus(function() {
-        window.scrollTo(0, 0);
-    });
-});
+    
+    $(document).ready(function () {
+            document.ontouchmove = function (e) {
+                e.preventDefault();
+            }
+        });
+        $(document).ready(function () {
+            $('.cmd').focus(function () {
+                window.scrollTo(0, 0);
+            });
+        });
 
 
 </script>
