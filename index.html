@@ -32,8 +32,11 @@
 
       /* fixing mobile keyboard pushing screen off view */
       overflow-y: auto; /* Make it scrollable */
-
       background-color: #80ed99; /*Actual background */
+    /* 
+       Known Bug: 
+       When the virtual keyboard appears on mobile devices, it can push content off-screen. Have tried many fixes :(
+    */
 
     }
   } 
@@ -114,14 +117,7 @@ this.echo('')
     prompt: 'guest@inhwa:~$ ',
     name: 'inhwa',
 });
-// The fix for the mobile keyboard scrolling issue
-$('.cmd').blur(function() {
-    setTimeout(function() {
-        if (!$(document.activeElement).is('.cmd')) {
-            $(window).scrollTop(0, 0);
-        }
-    }, 0);
-});
+
 
 </script>
   </body>
