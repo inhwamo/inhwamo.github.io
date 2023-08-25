@@ -109,6 +109,16 @@ $('body').terminal({
     greetings: "Welcome to InHwa Mo's interactive website!\nType 'explore' to get started.",
     prompt: 'guest@inhwa:~$ ',
     name: 'inhwa',});
+    
+    // Adding the script to adjust scroll on input focus:
+    $(document).ready(function() {
+    // jQuery Terminal appends an element with class '.cmd' as its input field.
+    $('.cmd').on('focus', function() {
+    window.scrollTo(0, $(this).offset().top);
+    });
+});    
+
+
 </script>
   </body>
 </html>
