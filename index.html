@@ -2,7 +2,7 @@
 
 <html lang="en-us">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="normalize.css">
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap" rel="stylesheet">
@@ -13,12 +13,29 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css"/>
 <style>
   /* https://coolors.co/palette/22577a-38a3a5-57cc99-80ed99-c7f9cc */
+
   :root {
-     --size: 1.3;
+     --size: 1.5;
      --cursor-line: 0.5;
-    --background: #80ed99;
+     background-color: #80ed99; /*Actual background */
+     --background: #80ed99; /*Terminal background*/
+
     --color: #22577a;
   }
+
+
+  /* mobile  */
+  @media (max-width: 600px) { 
+    :root {
+      margin-left: 10px;
+      margin-right: 10px;
+
+
+      background-color: #80ed99; /*Actual background */
+
+    }
+  } 
+
   
   a:hover {
     background: #73ABAD;
@@ -89,10 +106,9 @@ $('body').terminal({
     }
 
 }, {
-    greetings: "Welcome to InHwa Mo's interactive website! Type 'explore' to get started.",
-    prompt: 'guest@inhwa:~$ '
-
-});
+    greetings: "Welcome to InHwa Mo's interactive website!\nType 'explore' to get started.",
+    prompt: 'guest@inhwa:~$ ',
+    name: 'inhwa',});
 </script>
   </body>
 </html>
