@@ -113,7 +113,15 @@ this.echo('')
     greetings: "Welcome to InHwa Mo's interactive website!\nType 'explore' to get started.",
     prompt: 'guest@inhwa:~$ ',
     name: 'inhwa',
-            });
+});
+// The fix for the mobile keyboard scrolling issue
+$('.cmd').blur(function() {
+    setTimeout(function() {
+        if (!$(document.activeElement).is('.cmd')) {
+            $(window).scrollTop(0, 0);
+        }
+    }, 0);
+});
 
 </script>
   </body>
