@@ -109,16 +109,19 @@ $('body').terminal({
     greetings: "Welcome to InHwa Mo's interactive website!\nType 'explore' to get started.",
     prompt: 'guest@inhwa:~$ ',
     name: 'inhwa',});
-    
+
 let originalHeight = $(window).height();
+
 $(window).on('resize', function() {
     if ($(window).height() < originalHeight) {
         // Keyboard is visible
         window.setTimeout(function() {
-            window.scrollTo(0, $('.cmd').offset().top);
+            const cmdPosition = $('.cmd').offset().top + $('.cmd').outerHeight();
+            window.scrollTo(0, cmdPosition);
         }, 0);
     }
 });
+
 
 </script>
   </body>
