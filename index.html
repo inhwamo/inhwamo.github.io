@@ -27,15 +27,15 @@
   /* mobile  */
   @media (max-width: 600px) { 
     :root {
-      /* 0 margin for top and bottom */
-      margin: 0 10px; 
+      /* 0 margin for all. So no scrolling external to terminal window */
+      margin: 0 0px; 
 
       /* fixing mobile keyboard pushing screen off view */
       overflow-y: auto; /* Make it scrollable */
       background-color: #80ed99; /*Actual background */
     /* 
        Known Bug: 
-       When the virtual keyboard appears on mobile devices, it can push content off-screen. Have tried many fixes :(
+       When the virtual keyboard appears on mobile devices and you start typing, it can push content off-screen :(
     */
 
     }
