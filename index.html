@@ -30,6 +30,9 @@
       margin-left: 10px;
       margin-right: 10px;
 
+      /* fixing mobile keyboard pushing screen off view */
+      height: 300px; /* Adjust this based on your needs */
+      overflow-y: auto; /* Make it scrollable */
 
       background-color: #80ed99; /*Actual background */
 
@@ -73,6 +76,9 @@ $('body').terminal({
 });
       this.echo(twitter);
     },
+    face: function() {
+this.echo('')
+    },
     email: function() {
       const email = $('<a>',{
     text:'imo@sfu.ca',
@@ -108,15 +114,6 @@ $('body').terminal({
     greetings: "Welcome to InHwa Mo's interactive website!\nType 'explore' to get started.",
     prompt: 'guest@inhwa:~$ ',
     name: 'inhwa',
-    onInit: function(term) {
-                $('.cmd').focus(function() {
-                    this.scrollIntoView();
-                });
-                // Reset the default touch behavior
-                document.ontouchmove = function(e) {
-                    return true;
-                };
-              }
             });
 
 </script>
