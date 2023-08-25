@@ -51,13 +51,6 @@
 
   <body>
     <script>
-    const setFullHeight = () => {
-        document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-    }
-
-    window.addEventListener('load', setFullHeight);
-    window.addEventListener('resize', setFullHeight);
-
     let quotes = []; // Initialize quotes as empty
 
     $.getJSON('quotes.json', function(data) { // Fetch the quotes
@@ -114,20 +107,17 @@ $('body').terminal({
 }, {
     greetings: "Welcome to InHwa Mo's interactive website!\nType 'explore' to get started.",
     prompt: 'guest@inhwa:~$ ',
-    name: 'inhwa',});
-
-    
-    $(document).ready(function () {
-            document.ontouchmove = function (e) {
-                e.preventDefault();
-            }
-        });
-        $(document).ready(function () {
-            $('.cmd').focus(function () {
-                window.scrollTo(0, 0);
+    name: 'inhwa',
+    onInit: function(term) {
+                $('.cmd').focus(function() {
+                    this.scrollIntoView();
+                });
+                // Reset the default touch behavior
+                document.ontouchmove = function(e) {
+                    return true;
+                };
+              }
             });
-        });
-
 
 </script>
   </body>
