@@ -110,16 +110,16 @@ $('body').terminal({
     prompt: 'guest@inhwa:~$ ',
     name: 'inhwa',});
 
-let originalHeight = $(window).height();
 
-$(window).on('resize', function() {
-    if ($(window).height() < originalHeight) {
-        // Keyboard is visible
-        window.setTimeout(function() {
-            const cmdPosition = $('.cmd').offset().top + $('.cmd').outerHeight();
-            window.scrollTo(0, cmdPosition);
-        }, 0);
+$(document).ready(function() {
+    document.ontouchmove = function(e) {
+        e.preventDefault();
     }
+});
+$(document).ready(function() {
+    $('.cmd').focus(function() {
+        window.scrollTo(0, 0);
+    });
 });
 
 
