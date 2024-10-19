@@ -2,123 +2,131 @@
 
 <html lang="en-us">
   <head>
-    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      charset="utf-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <!-- <link rel="stylesheet" href="normalize.css">
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css"> -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css"/>
-<style>
-  /* https://coolors.co/palette/22577a-38a3a5-57cc99-80ed99-c7f9cc */
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css"
+    />
+    <style>
+      /* https://coolors.co/palette/22577a-38a3a5-57cc99-80ed99-c7f9cc */
 
-  :root {
-     --size: 1.5;
-     --cursor-line: 0.5;
-     background-color: #80ed99; /*Actual background */
-     --background: #80ed99; /*Terminal background*/
+      :root {
+        --size: 1.5;
+        --cursor-line: 0.5;
+        background-color: #80ed99; /*Actual background */
+        --background: #80ed99; /*Terminal background*/
 
-    --color: #22577a;
-  }
+        --color: #22577a;
+      }
 
+      /* mobile  */
+      @media (max-width: 600px) {
+        :root {
+          /* 0 margin for all. So no scrolling external to terminal window */
+          margin: 0 0px;
 
-  /* mobile  */
-  @media (max-width: 600px) { 
-    :root {
-      /* 0 margin for all. So no scrolling external to terminal window */
-      margin: 0 0px; 
-
-      /* fixing mobile keyboard pushing screen off view */
-      overflow-y: auto; /* Make it scrollable */
-      background-color: #80ed99; /*Actual background */
-    /* 
+          /* fixing mobile keyboard pushing screen off view */
+          overflow-y: auto; /* Make it scrollable */
+          background-color: #80ed99; /*Actual background */
+          /* 
        Known Bug: 
        When the virtual keyboard appears on mobile devices and you start typing, it can push content off-screen :(
     */
+        }
+      }
 
-    }
-  } 
+      a:hover {
+        background: #73abad;
+        color: #211830;
+      }
 
-  
-  a:hover {
-    background: #73ABAD;
-    color: #211830;
-  }
-
-  a, a:visited, a:active {
-    color: blue;  /* This will make your link color same */
-  }
-  </style>
+      a,
+      a:visited,
+      a:active {
+        color: blue; /* This will make your link color same */
+      }
+    </style>
     <title>inhwa</title>
   </head>
 
   <body>
     <script>
-    let quotes = []; // Initialize quotes as empty
+      let quotes = []; // Initialize quotes as empty
 
-    $.getJSON('quotes.json', function(data) { // Fetch the quotes
+      $.getJSON("quotes.json", function (data) {
+        // Fetch the quotes
         quotes = data;
-});
-$('body').terminal({
-    explore: function() {
-        this.echo(' some suggested commands:\n\tabout\n\tcurrent\n\temail\n\tquote\n\thow\n hint: there are more commands. feel free to try other keywords!');
-    },
-    about: function() {
-      this.echo(" I study Computing Science and Statistics at Simon Fraser University. I was born in Korea and grew up in China.");
-    },
-    current: function() {
-      this.echo(" Located in Vancouver, BC. Finishing up my final year.");
-    },
-    twitter: function() {
-      const twitter = $('<a>',{
-    text:'@sorryno',
-    href:'https://twitter.com/nope'
-});
-      this.echo(twitter);
-    },
-    face: function() {
-this.echo('')
-    },
-    email: function() {
-      const email = $('<a>',{
-    text:'imo@sfu.ca',
-    href:'mailto:imo@sfu.ca'
-});
-      this.echo(email);
-    },
- 
-
-    ls: function() {
-      this.echo( " Nothing here! :)")
-    },
-
-    quote: function() {
-              if (quotes.length > 0) {
-                  const today = new Date();
-                  const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
-                  const qotd = quotes[dayOfYear % quotes.length];
-                  this.echo(qotd.quote + " - " + qotd.author);
-              } else {
-                  this.echo('Error: Quotes could not be loaded.');
-              }
+      });
+      $("body").terminal(
+        {
+          explore: function () {
+            this.echo(
+              " some suggested commands:\n\tabout\n\tcurrent\n\temail\n\tquote\n\thow\n hint: there are more commands. feel free to try other keywords!"
+            );
           },
-    how: function(){
-        const link = $('<a>',{
-    text:'Made with jQuery Terminal by Jakub T. Janjiewicz',
-    href:'https://terminal.jcubic.pl/'
-});
-      this.echo(link);
-    }
+          about: function () {
+            this.echo(
+              " I study Computing Science and Statistics at Simon Fraser University. I was born in Korea and grew up in China."
+            );
+          },
+          current: function () {
+            this.echo(" Located in Vancouver, BC. Finishing up my final year.");
+          },
+          twitter: function () {
+            const twitter = $("<a>", {
+              text: "@sorryno",
+              href: "https://twitter.com/nope",
+            });
+            this.echo(twitter);
+          },
+          face: function () {
+            this.echo("");
+          },
+          email: function () {
+            const email = $("<a>", {
+              text: "imo@sfu.ca",
+              href: "mailto:imo@sfu.ca",
+            });
+            this.echo(email);
+          },
 
-}, {
-    greetings: "Welcome to InHwa Mo's interactive website!\nType 'explore' to get started.",
-    prompt: 'guest@inhwa:~$ ',
-    name: 'inhwa',
-});
+          ls: function () {
+            this.echo(" Nothing here! :)");
+          },
 
-
-</script>
+          quote: function () {
+            // replace with fortune?
+            if (quotes.length > 0) {
+              const today = new Date();
+              const dayOfYear = Math.floor(
+                (today - new Date(today.getFullYear(), 0, 0)) /
+                  (1000 * 60 * 60 * 24)
+              );
+              const qotd = quotes[dayOfYear % quotes.length];
+              this.echo(qotd.quote + " - " + qotd.author);
+            } else {
+              this.echo("Error: Quotes could not be loaded.");
+            }
+          },
+        },
+        {
+          greetings:
+            "Welcome to InHwa Mo's interactive website!\nType 'explore' to get started.",
+          prompt: "guest@inhwa:~$ ",
+          name: "inhwa",
+        }
+      );
+    </script>
   </body>
 </html>
